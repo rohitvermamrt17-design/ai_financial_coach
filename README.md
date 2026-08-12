@@ -45,7 +45,9 @@ Analyzes debts and creates debt payoff recommendations using the Avalanche and S
 
 ## 📁 Project Structure
 
+```text
 ai-financial-coach/
+│
 ├── ai_financial_coach_agent.py
 ├── .env.example
 ├── .gitignore
