@@ -54,28 +54,38 @@ ai-financial-coach/
 ├── requirements.txt
 ├── README.md
 └── LICENSE
+```
 
 ## ⚙️ Installation
 
 ### 1. Clone the repository
 
+```bash
 git clone https://github.com/rohitvermamrt17-design/ai_financial_coach.git
-
+```
+```bash
 cd ai-financial-coach
+```
 
 ### 2. Create a virtual environment
 
 Windows:
 
+```bash
 python -m venv .venv
+```
 
 Activate it:
 
+```bash
 .venv\Scripts\activate
+```
 
 ### 3. Install dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
 ## 🔑 API Key Setup
 
@@ -87,7 +97,9 @@ GOOGLE_API_KEY= your_actual_google_api_key
 
 ## ▶️ Run the Application
 
+```bash
 streamlit run ai_financial_coach_agent.py
+```
 
 The application will open in your browser.
 
