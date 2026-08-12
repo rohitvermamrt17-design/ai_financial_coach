@@ -1,4 +1,4 @@
-# 💰 AI Financial Coach
+# ₹ AI Financial Coach
 
 An AI-powered financial coaching application built with Python, Streamlit, Google ADK, and Gemini AI.
 
@@ -6,7 +6,7 @@ The application analyzes income, expenses, savings, and debts and provides perso
 
 ## 🚀 Features
 
-- 💰 Monthly income and household information
+- ₹ Monthly income and household information
 - 💳 Manual expense entry
 - 📊 CSV transaction upload
 - 📈 Spending analysis and visualizations
