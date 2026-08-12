@@ -57,7 +57,7 @@ ai-financial-coach/
 
 ### 1. Clone the repository
 
-git clone https://github.com/rohitvermamrt17-design/ai-financial-coach.git
+git clone https://github.com/rohitvermamrt17-design/ai_financial_coach.git
 
 cd ai-financial-coach
 
