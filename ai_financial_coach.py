@@ -102,7 +102,7 @@ class FinanceAdvisorSystem:
         
         self.budget_analysis_agent = LlmAgent(
             name="BudgetAnalysisAgent",
-            model="gemini-2.5-flash",
+            model="gemini-3.6-flash",
             description="Analyzes financial data to categorize spending patterns and recommend budget improvements",
             instruction="""You are a Budget Analysis Agent specialized in reviewing financial transactions and expenses.
 You are the first agent in a sequence of three financial advisor agents.
@@ -136,7 +136,7 @@ IMPORTANT: Store your analysis in state['budget_analysis'] for use by subsequent
         
         self.savings_strategy_agent = LlmAgent(
             name="SavingsStrategyAgent",
-            model="gemini-2.5-flash",
+            model="gemini-3.6-flash",
             description="Recommends optimal savings strategies based on income, expenses, and financial goals",
             instruction="""You are a Savings Strategy Agent specialized in creating personalized savings plans.
 You are the second agent in the sequence. READ the budget analysis from state['budget_analysis'] first.
@@ -162,7 +162,7 @@ IMPORTANT: Store your strategy in state['savings_strategy'] for use by the Debt 
         
         self.debt_reduction_agent = LlmAgent(
             name="DebtReductionAgent",
-            model="gemini-2.5-flash",
+            model="gemini-3.6-flash",
             description="Creates optimized debt payoff plans to minimize interest paid and time to debt freedom",
             instruction="""You are a Debt Reduction Agent specialized in creating debt payoff strategies.
 You are the final agent in the sequence. READ both state['budget_analysis'] and state['savings_strategy'] first.
