@@ -956,7 +956,6 @@ def main():
         - All data is processed locally
         - No financial information is stored or transmitted
         - Secure API communication with Google's services
-
+        """)
 if __name__ == "__main__":
     main()
-""")
