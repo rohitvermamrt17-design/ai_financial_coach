@@ -115,6 +115,10 @@ Your tasks:
 5. Provide actionable recommendations with specific, quantified potential savings amounts
 
 Consider:
+- ALL monetary amounts are in Indian Rupees (INR).
+- ALWAYS use the ₹ symbol when mentioning money.
+- NEVER use $, USD, dollars, or any other currency symbol.
+- When referring to a user's expense, income, saving, or potential saving, format the amount in ₹.
 - Number of dependants when evaluating household expenses
 - Typical spending ratios for the income level (housing 30%, food 15%, etc.)
 - Essential vs discretionary spending with clear separation
@@ -139,6 +143,11 @@ IMPORTANT: Store your analysis in state['budget_analysis'] for use by subsequent
             model="gemini-3.6-flash",
             description="Recommends optimal savings strategies based on income, expenses, and financial goals",
             instruction="""You are a Savings Strategy Agent specialized in creating personalized savings plans.
+            IMPORTANT CURRENCY RULE:
+All financial values are in Indian Rupees (INR).
+Always use ₹ when referring to monetary amounts.
+Never use $, USD, dollars, or any other currency.
+
 You are the second agent in the sequence. READ the budget analysis from state['budget_analysis'] first.
 
 Your tasks:
@@ -165,6 +174,10 @@ IMPORTANT: Store your strategy in state['savings_strategy'] for use by the Debt 
             model="gemini-3.6-flash",
             description="Creates optimized debt payoff plans to minimize interest paid and time to debt freedom",
             instruction="""You are a Debt Reduction Agent specialized in creating debt payoff strategies.
+            IMPORTANT CURRENCY RULE:
+All financial values are in Indian Rupees (INR).
+Always use ₹ when referring to monetary amounts.
+Never use $, USD, dollars, or any other currency.
 You are the final agent in the sequence. READ both state['budget_analysis'] and state['savings_strategy'] first.
 
 Your tasks:
@@ -416,18 +429,18 @@ def display_savings_strategy(strategy: Dict[str, Any]):
     if "emergency_fund" in strategy:
         ef = strategy["emergency_fund"]
         st.markdown(f"### Emergency Fund")
-        st.markdown(f"**Recommended Size**: ${ef['recommended_amount']:.2f}")
+        st.markdown(f"**Recommended Size**: ₹{ef['recommended_amount']:,.2f}")
         st.markdown(f"**Current Status**: {ef['current_status']}")
         
         if "current_amount" in ef and "recommended_amount" in ef:
             progress = ef["current_amount"] / ef["recommended_amount"]
             st.progress(min(progress, 1.0))
-            st.markdown(f"₹{ef['current_amount']:.2f} of ${ef['recommended_amount']:.2f}")
+            st.markdown(f"₹{ef['current_amount']:,.2f} of ₹{ef['recommended_amount']:,.2f}")
     
     if "recommendations" in strategy:
         st.markdown("### Recommended Savings Allocations")
         for rec in strategy["recommendations"]:
-            st.markdown(f"**{rec['category']}**: ${rec['amount']:.2f}/month")
+            st.markdown(f"**{rec['category']}**: ₹{rec['amount']:,.2f}/month")
             st.markdown(f"_{rec['rationale']}_")
     
     if "automation_techniques" in strategy:
@@ -468,21 +481,21 @@ def display_debt_reduction(plan: Dict[str, Any]):
             st.markdown("### Avalanche Method (Highest Interest First)")
             if "avalanche" in plan["payoff_plans"]:
                 avalanche = plan["payoff_plans"]["avalanche"]
-                st.markdown(f"**Total Interest Paid**: ${avalanche['total_interest']:.2f}")
+                st.markdown(f"**Total Interest Paid**: ₹{avalanche['total_interest']:,.2f}")
                 st.markdown(f"**Time to Debt Freedom**: {avalanche['months_to_payoff']} months")
                 
                 if "monthly_payment" in avalanche:
-                    st.markdown(f"**Recommended Monthly Payment**: ${avalanche['monthly_payment']:.2f}")
+                    st.markdown(f"**Recommended Monthly Payment**: ₹{avalanche['monthly_payment']:,.2f}")
         
         with tabs[1]:
             st.markdown("### Snowball Method (Smallest Balance First)")
             if "snowball" in plan["payoff_plans"]:
                 snowball = plan["payoff_plans"]["snowball"]
-                st.markdown(f"**Total Interest Paid**: ${snowball['total_interest']:.2f}")
+                st.markdown(f"**Total Interest Paid**: ₹{snowball['total_interest']:,.2f}")
                 st.markdown(f"**Time to Debt Freedom**: {snowball['months_to_payoff']} months")
                 
                 if "monthly_payment" in snowball:
-                    st.markdown(f"**Recommended Monthly Payment**: ${snowball['monthly_payment']:.2f}")
+                    st.markdown(f"**Recommended Monthly Payment**: ₹{snowball['monthly_payment']:,.2f}")
         
         with tabs[2]:
             st.markdown("### Method Comparison")
